@@ -32,20 +32,20 @@ class App extends React.Component{
     this.setState({
       titleStr: txt.target.value
     })
-  }
+  };
 
   handleSubmitAddMovie(txt) {
     this.state.movies.push({title: this.state.titleStr});
     this.setState({
       movies: this.state.movies,
     })
-  }
+  };
 
   handleChangeSearch(txt) {
     this.setState({
       searchStr: txt.target.value
     })
-  }
+  };
 
   render(){
     console.log('this.state.movies ==== ',this.state.movies);
