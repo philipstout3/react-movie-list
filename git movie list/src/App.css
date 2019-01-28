@@ -1,0 +1,23 @@
+.App {
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.movieContainer{
+  display: flex;
+  border-style: solid;
+  border-color: black;
+  margin: 10px;
+  padding: 3px;
+  display: table;
+}
+
+.searchCont{
+  margin-bottom: 50px;
+}
+
+.search{
+  display: flex;
+  justify-content: left;
+  float: left;
+}
