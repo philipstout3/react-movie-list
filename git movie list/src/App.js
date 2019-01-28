@@ -14,11 +14,11 @@ class App extends React.Component{
       submittedSearchStr: null,
       movies1: movies
     };
-    this.handleSubmitSearchSearchSearchSearch = this.handleSubmitSearchSearchSearchSearch.bind(this);
+    this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmitSearchSearchSearchSearch(e) {
+  handleSubmitSearch(e) {
     this.setState({
       submittedSearchStr: this.state.searchStr
     })
@@ -35,7 +35,7 @@ class App extends React.Component{
     return(
       <div className="App">
         <h1>Movie List!</h1>
-        <Search handleChange = {this.handleChange} handleSubmitSearchSearchSearchSearch = {this.handleSubmitSearchSearchSearch}/>
+        <Search handleChange = {this.handleChange} handleSubmitSearch = {this.handleSubmitSearch}/>
         {
           this.state.movies1.map((movie) => {
             if(movie.title.search(filterText) !== -1 || filterText === null){
