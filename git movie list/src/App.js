@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 //import {hot} from "react-hot-loader";
 import "./App.css";
-import movies from './movieData.js';
+//import movies from './movieData.js';
 import MovieList from './MovieList.js';
 import Search from './Search.js';
+import AddMovie from './AddMovie.js';
 
 class App extends React.Component{
   constructor(props) {
@@ -12,10 +13,13 @@ class App extends React.Component{
     this.state = {
       searchStr: '',
       submittedSearchStr: null,
-      movies1: movies
+      titleStr: '',
+      movies: []
     };
     this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeSearch = this.handleChangeSearch.bind(this);
+    this.handleChangeAddMovie = this.handleChangeAddMovie.bind(this);
+    this.handleSubmitAddMovie = this.handleSubmitAddMovie.bind(this);
   }
 
   handleSubmitSearch(e) {
@@ -24,20 +28,35 @@ class App extends React.Component{
     })
   };
 
-  handleChange(txt) {
+  handleChangeAddMovie(txt) {
+    this.setState({
+      titleStr: txt.target.value
+    })
+  }
+
+  handleSubmitAddMovie(txt) {
+    this.state.movies.push({title: this.state.titleStr});
+    this.setState({
+      movies: this.state.movies,
+    })
+  }
+
+  handleChangeSearch(txt) {
     this.setState({
       searchStr: txt.target.value
     })
   }
 
   render(){
+    console.log('this.state.movies ==== ',this.state.movies);
     var filterText = this.state.submittedSearchStr;
     return(
       <div className="App">
         <h1>Movie List!</h1>
-        <Search handleChange = {this.handleChange} handleSubmitSearch = {this.handleSubmitSearch}/>
+        <AddMovie handleChangeAddMovie = {this.handleChangeAddMovie} handleSubmitAddMovie = {this.handleSubmitAddMovie}/>
+        <Search handleChangeSearch = {this.handleChangeSearch} handleSubmitSearch = {this.handleSubmitSearch}/>
         {
-          this.state.movies1.map((movie) => {
+          this.state.movies.map((movie) => {
             if(movie.title.search(filterText) !== -1 || filterText === null){
               return <MovieList movie = {movie}/>
             }

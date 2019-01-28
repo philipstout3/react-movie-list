@@ -1,13 +1,18 @@
 import React from 'react';
 
-class AddMovie extends React.Comopnent {
+class AddMovie extends React.Component {
 	constructor(props) {
 		super(props);
-		state = {}
+		this.state = {};
 	}
 	render() {
 		return (
-			<input></input>
+			<div>
+				<input className='input' onChange={this.props.handleChangeAddMovie}></input>
+				<button className='button' onClick={this.props.handleSubmitAddMovie}>Add Movie</button>
+			</div>
 		)
 	}
 }
+
+export default AddMovie;
